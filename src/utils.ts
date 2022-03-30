@@ -26,7 +26,7 @@ export function getRunInformation() {
     owner,
     repo,
     ref: process.env.GITHUB_SHA || undefined,
-    branchUrl: `https://github.com/${process.env.GITHUB_REPOSITORY}/tree/${process.env.GITHUB_REF}`,
+    branchUrl: `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/tree/${process.env.GITHUB_REF}`,
     runId: process.env.GITHUB_RUN_ID || undefined,
     runNum: process.env.GITHUB_RUN_NUMBER || undefined,
   };
@@ -37,7 +37,7 @@ export async function getOctokitCommit() {
   info("Workflow run information: " + JSON.stringify(runInfo, undefined, 2));
 
   const githubToken = getInput("github-token", { required: true });
-  const octokit = new Octokit({ auth: `token ${githubToken}` });
+  const octokit = new Octokit({ auth: `token ${githubToken}`, baseUrl: `${process.env.GITHUB_API_URL}` });
 
   return await octokit.repos.getCommit({
     owner: runInfo.owner,
@@ -88,7 +88,7 @@ export async function formatAndNotify(
 export async function getWorkflowRunStatus() {
   const runInfo = getRunInformation();
   const githubToken = getInput("github-token", { required: true });
-  const octokit = new Octokit({ auth: `token ${githubToken}` });
+  const octokit = new Octokit({ auth: `token ${githubToken}`, baseUrl: `${process.env.GITHUB_API_URL}` });
   const workflowJobs = await octokit.actions.listJobsForWorkflowRun({
     owner: runInfo.owner,
     repo: runInfo.repo,
