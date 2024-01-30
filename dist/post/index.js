@@ -15429,9 +15429,9 @@ module.exports = (function (e, t) {
                 const statusColor = a.CONCLUSION_THEMES[r] || "5DB1D1";
                 l.themeColor = statusColor;
 
-                let status = `\`${t.toUpperCase()}\``;
-                if (r) {
-                    status = `\`${t.toUpperCase()} [${r}s]\``;
+                let status = `\`${r.toUpperCase()}\``;
+                if (n) {
+                    status = `\`${r.toUpperCase()} [${n}s]\``;
                 }
                 status = status.replace(/`/g, '');           // Remove backticks from the value
                 status = status.replace(/\s*\[\d+s\]$/, ''); // Remove the brackets and seconds from the status
