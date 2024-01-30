@@ -15432,7 +15432,7 @@ module.exports = (function (e, t) {
                 const y = e.data.author;
                 l.sections = [
                     {
-                        activityTitle: `<h1 style="color:#${statusColor}; font-size: 16px;">${m}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
+                        activityTitle: `<h1 style="color:#FF3333; font-size: 16px;">${m}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // activityTitle: `${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         activityImage: (y === null || y === void 0 ? void 0 : y.avatar_url) || t.OCTOCAT_LOGO_URL,
                         activitySubtitle: y ? `by [@${y.login}](${y.html_url}) on ${d}` : d,
