@@ -15426,13 +15426,28 @@ module.exports = (function (e, t) {
                 if (M !== "") {
                     g += ` \`ENV:${M.toUpperCase()}\``;
                 }
-                l.themeColor = a.CONCLUSION_THEMES[r] || "957DAD";
+                const statusColor = a.CONCLUSION_THEMES[r] || "5DB1D1";
+                l.themeColor = statusColor;
+
+                let status = `\`${t.toUpperCase()}\``;
+                if (r) {
+                    status = `\`${t.toUpperCase()} [${r}s]\``;
+                }
+                status = status.replace(/`/g, '');           // Remove backticks from the value
+                status = status.replace(/\s*\[\d+s\]$/, ''); // Remove the brackets and seconds from the status
+                // Check the status and append the corresponding emoji
+                if (status === "FAILURE") {
+                    status = `❌ ${status} ❌`;
+                } else if (status === "SUCCESS") {
+                    status = `✅ ${status} ✅`;
+                }
+
                 const h = c.renderActions(`${f}/actions/runs/${process.env.GITHUB_RUN_ID}`, e.data.html_url);
                 const b = h.map((e) => ` &nbsp; &nbsp; [${e.name}](${e.target})`).join("");
                 const y = e.data.author;
                 l.sections = [
                     {
-                        activityTitle: `<h1 style="color:#FF3333; font-size: 16px;">${m}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
+                        activityTitle: `<h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // activityTitle: `${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         activityImage: (y === null || y === void 0 ? void 0 : y.avatar_url) || t.OCTOCAT_LOGO_URL,
                         activitySubtitle: y ? `by [@${y.login}](${y.html_url}) on ${d}` : d,
