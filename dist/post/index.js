@@ -15449,7 +15449,7 @@ module.exports = (function (e, t) {
                 let appVersionValue; // Variable to store the app version value
                 if (w && w.toLowerCase() !== "null") {
                     try {
-                        const t = q.default.parse(g);
+                        const t = q.default.parse(w);
                         if (Array.isArray(t)) {
                             for (let i = 0; i < t.length; i++) {
                                 const fact = t[i];
