@@ -15449,13 +15449,14 @@ module.exports = (function (e, t) {
                 const y = e.data.author;
                 l.sections = [
                     {
-                        activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <font style="color:#${statusColor}; font-size: 16px;">${status}</font> Initiated by: ${process.env.GITHUB_ACTOR}`,
+                        activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <font style="color:#${statusColor}; font-size: 16px;">${status}</font>`,
                         // activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> Initiated by: ${process.env.GITHUB_ACTOR} on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // GOOD: activityTitle: `<h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // TEST HERE: activityTitle: `${process.env.GITHUB_ACTOR} **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         activityImage: (y === null || y === void 0 ? void 0 : y.avatar_url) || t.OCTOCAT_LOGO_URL,
-                        activitySubtitle: y ? `test Subtitle: by [@${y.login}](${y.html_url}) on ${d}` : d,
-                        activityText: `test activityText: ${g}${b}`,
+                        activitySubtitle: `Initiated by: <font style="color:#008000;">${process.env.GITHUB_ACTOR}</font> on ${d}`,
+                        // activitySubtitle: y ? `test Subtitle: by [@${y.login}](${y.html_url}) on ${d}` : d,
+                        activityText: `activityText: ${g}${b}`,
                     },
                 ];
                 return l;
