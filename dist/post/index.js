@@ -15426,9 +15426,11 @@ module.exports = (function (e, t) {
                 if (M !== "") {
                     g += ` \`ENV:${M.toUpperCase()}\``;
                 }
+
                 const statusColor = a.CONCLUSION_THEMES[r] || "5DB1D1";
                 l.themeColor = statusColor;
 
+                // Put status in the title
                 let status = `\`${r.toUpperCase()}\``;
                 if (n) {
                     status = `\`${r.toUpperCase()} [${n}s]\``;
@@ -15447,11 +15449,12 @@ module.exports = (function (e, t) {
                 const y = e.data.author;
                 l.sections = [
                     {
-                        activityTitle: `<h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
+                        activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> ${process.env.GITHUB_ACTOR} on [${process.env.GITHUB_REPOSITORY}](${f})`,
+                        // GOOD: activityTitle: `<h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // activityTitle: `${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         activityImage: (y === null || y === void 0 ? void 0 : y.avatar_url) || t.OCTOCAT_LOGO_URL,
-                        activitySubtitle: y ? `by [@${y.login}](${y.html_url}) on ${d}` : d,
-                        activityText: `${g}${b}`,
+                        activitySubtitle: y ? `test Subtitle: by [@${y.login}](${y.html_url}) on ${d}` : d,
+                        activityText: `test activityText: ${g}${b}`,
                     },
                 ];
                 return l;
