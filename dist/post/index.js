@@ -15406,6 +15406,7 @@ module.exports = (function (e, t) {
             Object.defineProperty(t, "__esModule", { value: true });
             t.formatCozyLayout = t.OCTOCAT_LOGO_URL = void 0;
             const i = n(r(717));
+            const q = n(r(521));
             const o = r(470);
             const s = r(504);
             const a = r(694);
@@ -15448,11 +15449,10 @@ module.exports = (function (e, t) {
                 let appVersionValue; // Variable to store the app version value
                 if (w && w.toLowerCase() !== "null") {
                     try {
-                        const t = o.default.parse(g);
+                        const t = q.default.parse(g);
                         if (Array.isArray(t)) {
                             for (let i = 0; i < t.length; i++) {
                                 const fact = t[i];
-
                                 if (fact.name !== undefined && fact.value !== undefined) {
                                     if (fact.name.toLowerCase() === "app version") {
                                         // Make the output bold for the "App version" fact
