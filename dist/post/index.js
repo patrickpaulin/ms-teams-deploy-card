@@ -15443,13 +15443,43 @@ module.exports = (function (e, t) {
                 } else if (status === "SUCCESS") {
                     status = `✅ ${status} ✅`;
                 }
+                // Extract the app version from the custom facts
+                const w = o.getInput("custom-facts");
+                if (w && w.toLowerCase() !== "null") {
+                    try {
+                        let appVersionValue; // Variable to store the app version value
+                        const t = o.default.parse(g);
+                        if (Array.isArray(t)) {
+                            for (let i = 0; i < t.length; i++) {
+                                const fact = t[i];
+
+                                if (fact.name !== undefined && fact.value !== undefined) {
+                                    if (fact.name.toLowerCase() === "app version") {
+                                        // Make the output bold for the "App version" fact
+                                        fact.value = `<strong>${fact.value}</strong>`;
+                                        appVersionValue = fact.value; // Store the app version value
+                                        break; // Exit the loop once the "app version" fact is found
+                                    }
+                                }
+                            }
+                        }
+                        if (appVersionValue !== undefined) {
+                            // Now you can use the appVersionValue variable elsewhere in your code
+                            i.info(`App version: ${appVersionValue}`);
+                        } else {
+                            i.info("App version not found in custom facts.");
+                        }
+                    } catch (e) {
+                        i.warning("Invalid custom-facts value.");
+                    }
+                }
 
                 const h = c.renderActions(`${f}/actions/runs/${process.env.GITHUB_RUN_ID}`, e.data.html_url);
                 const b = h.map((e) => ` &nbsp; &nbsp; [${e.name}](${e.target})`).join("");
                 const y = e.data.author;
                 l.sections = [
                     {
-                        activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <font style="color:#${statusColor}; font-size: 16px;">${status}</font>`,
+                        activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <font style="color:#${statusColor}; font-size: 16px;">${status}</font> ${appVersionValue}`,
                         // activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> Initiated by: ${process.env.GITHUB_ACTOR} on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // GOOD: activityTitle: `<h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // TEST HERE: activityTitle: `${process.env.GITHUB_ACTOR} **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
