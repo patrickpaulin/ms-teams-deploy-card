@@ -15445,9 +15445,9 @@ module.exports = (function (e, t) {
                 }
                 // Extract the app version from the custom facts
                 const w = o.getInput("custom-facts");
+                let appVersionValue; // Variable to store the app version value
                 if (w && w.toLowerCase() !== "null") {
                     try {
-                        let appVersionValue; // Variable to store the app version value
                         const t = o.default.parse(g);
                         if (Array.isArray(t)) {
                             for (let i = 0; i < t.length; i++) {
