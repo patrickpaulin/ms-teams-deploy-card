@@ -15449,7 +15449,7 @@ module.exports = (function (e, t) {
                 const y = e.data.author;
                 l.sections = [
                     {
-                        activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> ${process.env.GITHUB_ACTOR} on [${process.env.GITHUB_REPOSITORY}](${f})`,
+                        activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <h1 style="color:#${statusColor}; font-size: 14px;">${status}</h1> Initiated by: ${process.env.GITHUB_ACTOR} on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // GOOD: activityTitle: `<h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // activityTitle: `${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         activityImage: (y === null || y === void 0 ? void 0 : y.avatar_url) || t.OCTOCAT_LOGO_URL,
