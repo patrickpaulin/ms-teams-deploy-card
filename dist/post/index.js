@@ -15485,7 +15485,7 @@ module.exports = (function (e, t) {
                         // TEST HERE: activityTitle: `${process.env.GITHUB_ACTOR} **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         activityImage: `https://avatars.githubusercontent.com/${process.env.GITHUB_ACTOR}` || t.OCTOCAT_LOGO_URL,
                         // activityImage: (y === null || y === void 0 ? void 0 : y.avatar_url) || t.OCTOCAT_LOGO_URL,
-                        activitySubtitle: `Initiated by: <font style="color:#008000;">${process.env.GITHUB_ACTOR}</font> on <font style="color:#999900};">${d}</font>`,
+                        activitySubtitle: `Initiated by: <font style="color:#008000;">${process.env.GITHUB_ACTOR}</font> on <font style="color:#999900;">${d}</font>`,
                         // activitySubtitle: y ? `test Subtitle: by [@${y.login}](${y.html_url}) on ${d}` : d,
                         activityText: `activityText: ${g}${b}`,
                     },
