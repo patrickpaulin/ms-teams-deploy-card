@@ -15479,7 +15479,8 @@ module.exports = (function (e, t) {
                 const y = e.data.author;
                 l.sections = [
                     {
-                        activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <font style="color:#${statusColor}; font-size: 16px;">${status}</font> for ${appVersionValue}`,
+                        activityTitle: `<font style="color:#${statusColor}; font-size: 16px;">${status}</font> **CI #${process.env.GITHUB_RUN_NUMBER}:** for ${appVersionValue}`,
+                        //activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <font style="color:#${statusColor}; font-size: 16px;">${status}</font> for ${appVersionValue}`,
                         // activityTitle: `**CI #${process.env.GITHUB_RUN_NUMBER}:** <h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> Initiated by: ${process.env.GITHUB_ACTOR} on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // GOOD: activityTitle: `<h1 style="color:#${statusColor}; font-size: 16px;">${status}</h1> ${process.env.GITHUB_ACTOR} TEST HERE ! **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
                         // TEST HERE: activityTitle: `${process.env.GITHUB_ACTOR} **CI #${process.env.GITHUB_RUN_NUMBER} (commit ${m})** on [${process.env.GITHUB_REPOSITORY}](${f})`,
