@@ -15465,12 +15465,12 @@ module.exports = (function (e, t) {
                         }
                         if (appVersionValue !== undefined) {
                             // Now you can use the appVersionValue variable elsewhere in your code
-                            i.info(`App version: ${appVersionValue}`);
+                            o.info(`App version: ${appVersionValue}`);
                         } else {
-                            i.info("App version not found in custom facts.");
+                            o.info("App version not found in custom facts.");
                         }
                     } catch (e) {
-                        i.warning("Invalid custom-facts value.");
+                        o.warning("Invalid custom-facts value.");
                     }
                 }
 
